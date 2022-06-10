@@ -4,21 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Navbutton extends Component
+class UserInfo extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $text;
-    public $route;
-    public $icon;
-    public function __construct($text,$route,$icon)
+    public $displayName;
+    public $avatar;
+    public function __construct()
     {
-        $this->text = $text;
-        $this->route = $route;
-        $this->icon = $icon;
+        $this->displayName = "Test user";
+        $this->avatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
     }
 
     /**
@@ -28,6 +26,6 @@ class Navbutton extends Component
      */
     public function render()
     {
-        return view('components.navbutton');
+        return view('components.user-info');
     }
 }

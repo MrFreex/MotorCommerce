@@ -23,7 +23,8 @@ button {
 
 .nav {
     background-color: #1d1d1d;
-    
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar-brand {

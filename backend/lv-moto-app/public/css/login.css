@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    height: max-content;
+}
+
+form.login-form {
+    background-color: #22222c;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    max-width: 30vw;
+    justify-content: space-around;
+    padding: 2vh 2vw;
+    margin: 10vh auto;
+}
+
+form.login-form > span::before {
+    content: "> ";
+    color: rgb(228, 69, 69);
+    text-shadow: rgb(228, 69, 69) 0 0 2px;
+}
+
+form.login-form > button[type="submit"] {
+    margin-top: 4vh;
+}
+
+form.login-form > input {
+    outline: none;
+    border-radius: 0.35vw;
+    padding: 1vh;
+}
+
+form.login-form > * {
+    margin-bottom: 1vh;
+}

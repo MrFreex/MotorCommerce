@@ -1,3 +1,1 @@
-<div class="nav-button">
-    <a href="{{$route}}">{{$text}}</a>
-</div>
+<a class="nav-button" href="{{$route}}"><i class="{{$icon}}"></i>{{$text}}</a>
