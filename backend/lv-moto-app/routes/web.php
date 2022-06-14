@@ -18,5 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/login', "LoginController@showLoginForm"); 
+Route::get('/logout', "LoginController@logout");
+Route::get('/register', "RegisterController@show");
+
+Route::get('/userProfile/{username}/{usePopup?}', "UserProfileController@show")->name('userProfile');
 
 Route::post('/confirmLogin', "LoginController@validateLoginForm");
+Route::post('/confirmRegister', "RegisterController@validateRegister");
+Route::post('/upload/bg', "UploadController@uploadBg");

@@ -13,9 +13,9 @@
     <form method="post" action="{{url('confirmLogin')}}" class="login-form">
         {{ csrf_field() }}
         <span>Username/Email</span>
-        <input name="email" type="text">
+        <input placeholder="Username" name="email" type="text">
         <span>Password</span>
-        <input name="password" type="password">
+        <input placeholder="Password" name="password" type="password">
         <button type="submit">Login</button>
     </form>
 @endsection

@@ -142,8 +142,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'confirmPassword' => [
+            'same' => 'The passwords must match.',
         ],
     ],
 

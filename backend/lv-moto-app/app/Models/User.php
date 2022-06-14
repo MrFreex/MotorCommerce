@@ -2,43 +2,81 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model implements \Illuminate\Contracts\Auth\Authenticatable
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
-    protected $fillable = ['username', 'email', 'password','email_verified_at'];
-    protected $primaryKey = 'username';
 
-    public function getAuthIdentifierName()
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'username',
+        'password',
+        'avatar',
+        'profileBg',
+        'phone',
+        'address',
+        'birthday',
+        'city',
+        'state',
+        'zip',
+        'country'
+    ];
+
+    protected $adminGroups = [
+        'root',
+        'manager'
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Always encrypt password when it is updated.
+     *
+     * @param $value
+     * @return string
+     */
+    public function setPasswordAttribute($value)
     {
-        return 'username';
+        $this->attributes['password'] = bcrypt($value);
     }
 
-    public function getAuthIdentifier() {
-        return $this->username;
-    }
-
-    public function getAuthPassword() {
-        return $this->password;
-    }
-
-    public function getRememberToken() {
-        return $this->remember_token;
-    }
-
-    public function setRememberToken($value) {
-        $this->remember_token = $value;
-    }
-
-    public function getRememberTokenName() {
-        return 'remember_token';
-    }
-
-    public function get($username) {
-        $user = User::where('username', $username)->first();
-        return $user;
+    public function canUseAdminPanel()
+    {
+        return in_array($this->permission, $this->adminGroups);
     }
 }

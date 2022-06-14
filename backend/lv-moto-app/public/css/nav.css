@@ -1,5 +1,6 @@
 :root {
     --btn-color : #272744;
+    --btn-color-light: #5151aa;
     --btn-color-hover : #2c2c4b;
 }
 
@@ -32,12 +33,12 @@
 
 .navbuttons {
     display: flex;
-    margin: auto 2vw;
+    margin: auto auto;
 }
 
 .login-reg {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     margin: auto 2vw;
 }
 
@@ -60,15 +61,39 @@
     border-right: 0.1vw solid white;
 }
 
-.user-avatar {
-    height: 3vh;
-    border-radius: 50%;
+
+
+.user-flex {
+    display: flex;
+    justify-content: right;
 }
 
 .user-info {
+    display: flex;
     margin: auto 2vw;
+}
+
+.user-info > span {
+    display: block;
+    margin: auto;
 }
 
 .user-info > * {
     margin: 0 0.5vw;
+}
+
+.user-info > a:nth-child(1) {
+    display: block;
+    margin: auto 0.5vw;
+    height: 3vh;
+    width: 3vh;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-avatar {
+    display: block;
+    margin: auto;
+    height: 3vh;
+    width: 3vh;
 }

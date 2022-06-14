@@ -16,18 +16,12 @@ form.login-form {
 
 form.login-form > span::before {
     content: "> ";
-    color: rgb(228, 69, 69);
-    text-shadow: rgb(228, 69, 69) 0 0 2px;
+    color: var(--btn-color-light);
+    text-shadow: var(--btn-color-light) 0 0 2px;
 }
 
 form.login-form > button[type="submit"] {
     margin-top: 4vh;
-}
-
-form.login-form > input {
-    outline: none;
-    border-radius: 0.35vw;
-    padding: 1vh;
 }
 
 form.login-form > * {

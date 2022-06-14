@@ -1,0 +1,76 @@
+.userProfile-container {
+    margin: auto;
+    background-color: #282833;
+    min-height: 50vh;
+}
+
+.userProfile-header {
+    height: 30vh;
+    width: 100%;
+    border-bottom: solid #222222 2px;
+    background-color: var(--btn-color-hover);
+}
+
+.userProfile-background {
+    height: 100%;
+}
+
+.userProfile-avatar {
+    display: flex;
+    transform: translate(0,-50%);
+}
+
+.userProfile-avatar > h1 {
+    transform: translate(0,25%);
+    margin-bottom: 0.5vh;
+}
+
+.userProfile-avatar > div > div {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: rgba(58, 58, 58, 0.822);
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+    margin: 0 2vw;
+    border-radius: 50%;
+    transform: translate(0, 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.userProfile-changebg {
+    display: flex;
+    justify-content: right;
+    padding: 1vh;
+}
+
+.userProfile-avatar > div > div > i {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 200%;
+}
+
+.userProfile-avatar > div > div:hover {
+    opacity: 1;
+    
+}
+
+.userProfile-avatar > div >  img {
+    border: #222222 solid 2px;
+    border-bottom: none;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0, -50%);
+    height: 100px;
+    width: 100px;
+    margin: 0 2vw;
+    border-radius: 50%;
+}
