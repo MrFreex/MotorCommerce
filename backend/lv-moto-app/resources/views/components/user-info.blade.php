@@ -1,6 +1,6 @@
 <div class="user-flex">
     <div class="user-info">
-        <a href="{{ url('/userProfile/' . $username) }}"><img class="user-avatar" src="{{$avatar}}"></a>
+        <a href="{{ url('/userProfile/' . $username) }}"><img class="user-avatar" onerror="this.src='{{ asset("/assets/avatar.png") }}'" src="{{ asset('/avatars/' . auth()->user()->avatar) }}"></a>
         <span>{{$displayName}}</span>
         <button onclick="window.location='{{ url('/logout') }}'">Logout</button>
         @if ($isAdmin)

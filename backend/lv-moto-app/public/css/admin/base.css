@@ -1,0 +1,7 @@
+body {
+    color: black;
+    background-color: #ffffff;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 15% auto;
+}

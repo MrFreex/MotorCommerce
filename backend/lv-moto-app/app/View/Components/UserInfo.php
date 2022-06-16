@@ -18,7 +18,7 @@ class UserInfo extends Component
     public $username;
     public function __construct()
     {
-        $this->username = auth()->user()->username;
+        $this->username = auth()->user()->displayname;
         $this->displayName = auth()->user()->name;
         $this->avatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
         $this->isAdmin = auth()->user()->canUseAdminPanel();

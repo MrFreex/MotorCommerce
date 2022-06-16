@@ -1,21 +1,21 @@
-@extends('page')
-
-@section('title')
-    Login
-@endsection
+@extends("popup")
 
 @push("styles")
-    <link rel="stylesheet" href="{{ asset("css/login.css") }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
-@section("content")
-    <form method="post" action="{{url('confirmLogin')}}" class="login-form">
+@section("p-title")
+    Change Avatar
+@endsection
+
+@section("popup")
+    <form class="popup-header" enctype="multipart/form-data" method="post" action="{{url('upload/avatar')}}">
         {{ csrf_field() }}
-        <span>Username/Email</span>
-        <input placeholder="Username" name="email" type="text">
-        <span>Password</span>
-        <input placeholder="Password" name="password" type="password">
+        
+        <span class="inputSpan">Url</span>
+        <input name="url" type="text" id="url" placeholder="Url">
+        <span class="inputSpan">File</span>
+        <input name="file" type="file" id="file" placeholder="File">
         @if(isset ($errors) && count($errors) > 0)
             <div class="alert alert-warning" role="alert">
                 <ul class="list-unstyled mb-0">
@@ -25,6 +25,6 @@
                 </ul>
             </div>
         @endif
-        <button type="submit">Login</button>
+        <button type="submit">Carica</button>
     </form>
 @endsection

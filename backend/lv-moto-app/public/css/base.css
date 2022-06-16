@@ -11,16 +11,6 @@ button {
     color: white;
 }
 
-.footer {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    padding: 2vh;
-    background-color: #1d1d1d;
-}
-
 .nav {
     background-color: #1d1d1d;
     display: grid;
@@ -61,10 +51,31 @@ button {
     background: #22222c;
 }
 
+.popup-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-close {
+    font-size: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup-close > * {
+    display: block;
+}
+
+.popup-close a {
+    color: white !important;
+}
+
 input {
     outline: none;
     border-radius: 0.35vw;
     padding: 1vh;
+    margin-bottom: 2vh;
 }
 
 .inputSpan {
@@ -74,7 +85,7 @@ input {
 }
 
 button[type="submit"] {
-    margin-top: 1.5vh;
+    margin-top: 4vh;
     width: 100%;
 }
 

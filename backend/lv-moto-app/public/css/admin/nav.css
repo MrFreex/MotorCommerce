@@ -1,0 +1,16 @@
+.adm-navbar {
+    background-color: #c4c4c4;
+    display: flex;
+    color: black;
+    flex-direction: column;
+    padding-top: 5vh;
+}
+
+.navbar-brand {
+    text-align: center;
+}
+
+.navbar-brand img {
+    max-width: 60%;
+    margin-bottom: 2vh;
+}

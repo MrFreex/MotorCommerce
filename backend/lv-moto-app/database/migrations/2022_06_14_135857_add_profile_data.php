@@ -17,11 +17,11 @@ class AddProfileData extends Migration
             $table->string('avatar')->nullable();
             $table->string('profile-bg')->nullable();
             $table->string('phone')->nullable();
-            $table->string('address')->default('N/A');
-            $table->string('city')->default('N/A');
-            $table->string('state')->default('N/A');
-            $table->string('zip')->default('N/A');
-            $table->string('country')->default('N/A');
+            $table->string('address')->default('');
+            $table->string('city')->default('');
+            $table->string('state')->default('');
+            $table->string('zip')->default('');
+            $table->string('country')->default('');
             $table->date('birthday')->nullable();
         });
     }

@@ -12,17 +12,23 @@
 }
 
 .userProfile-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
 }
 
 .userProfile-avatar {
     display: flex;
-    transform: translate(0,-50%);
+    transform: translate(0%, 50%);
 }
 
 .userProfile-avatar > h1 {
     transform: translate(0,25%);
     margin-bottom: 0.5vh;
+    background: #282833;
+    padding: 1.5vh;
+    border-radius: 20px;
 }
 
 .userProfile-avatar > div > div {
@@ -41,15 +47,22 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .userProfile-changebg {
     display: flex;
     justify-content: right;
     padding: 1vh;
+    height: 6.5vh;
+    
 }
 
-.userProfile-avatar > div > div > i {
+.userProfile-changebg > button {
+    margin-left: 10px;
+}
+
+.userProfile-avatar > div i {
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -58,7 +71,16 @@
 
 .userProfile-avatar > div > div:hover {
     opacity: 1;
-    
+}
+
+.userProfile-avatar > div a {
+    display: block;
+    color: white;
+}
+
+.userProfile-avatar > div a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .userProfile-avatar > div >  img {

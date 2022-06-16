@@ -14,7 +14,12 @@ function console_log( $data ){
 class UserProfileController extends Controller
 {
     public function show($username, $usePopup = false) {
-        $user = User::where('username', $username)->first();
-        return view('userProfile', ['username' => $username, 'userdata' => $user])->with("usePopup", $usePopup);
+        $user = User::where('displayname', $username)->first();
+        return view('userProfile', ['username' => $username, 'userdata' => array( 
+            'avatar' => $user->avatar,
+            'profileBg' => $user->profileBg,
+            'name' => $user->name,
+            'birthday' => $user->birthday
+         )])->with("usePopup", $usePopup);
     }
 }

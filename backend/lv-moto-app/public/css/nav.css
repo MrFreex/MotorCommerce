@@ -94,6 +94,6 @@
 .user-avatar {
     display: block;
     margin: auto;
-    height: 3vh;
-    width: 3vh;
+    height: 100%;
+    width: 100%;
 }
