@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\CreateUserRequest;
 
 function console_log( $data ){
     echo '<script>';
@@ -31,7 +31,7 @@ class RegisterController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function validateRegister(RegisterRequest $request) 
+    public function validateRegister(CreateUserRequest $request) 
     {
         console_log($request->validated());
         $user = User::create($request->validated());

@@ -20,13 +20,12 @@ class UploadController extends Controller
         $background = $request->bg;
 
         if(is_null($background)) {
-            $request->file('file')->storeAs($storage, $user->username);
-            $background = $user->username;
+            $request->file('file')->storeAs($storage, $user->displayname);
+            $background = $user->displayname;
         }
-
         $user->update(array($dbfield => $background));
 
-        return redirect("/userProfile/$user->username")->with('success', 'Upload successful.');
+        return redirect("/userProfile/$user->displayname")->with('success', 'Upload successful.');
     }
 
     public function uploadAvatar(Request $request) {
@@ -35,6 +34,6 @@ class UploadController extends Controller
 
     public function uploadBg(Request $request)
     {
-        return UploadController::userUpload($request, 'userBg', 'backgrounds');
+        return UploadController::userUpload($request, 'profileBg', 'backgrounds');
     }
 }

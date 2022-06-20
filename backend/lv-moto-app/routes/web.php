@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,19 @@ Route::prefix('userSettings')->group(function() {
 
 Route::prefix('admin')->middleware('EnsureAdminUser')->group(function() {
     Route::get('/', "APPagesController@home")->name('admin');
+    Route::prefix('users')->group(function() {
+        Route::get('/list/{search?}/{field?}', "APPagesController@users")->name('admin.users');
+        
+        Route::post('/list/search', "APPagesController@searchUsers")->name('admin.users.search');
+        
+        Route::get('/delete/{id}', "UserController@delete")->name('admin.users.delete');
+        Route::get('/edit/{id}', "UserController@edit")->name('admin.users.edit');
+        Route::get('/create', "UserController@createview")->name('admin.users.create');
+        Route::get('/loginas/{id}', "UserController@adminLoginAs")->name('admin.users.loginas');
+
+        Route::post('/confirmEdit', "UserController@confirmEdit")->name('admin.users.confirmEdit');
+        Route::post('/confirmCreate', "UserController@confirmCreate")->name('admin.user.confirmCreate');
+    });
 });
 
 Route::post('/confirmLogin', "LoginController@validateLoginForm");

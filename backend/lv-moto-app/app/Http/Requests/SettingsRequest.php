@@ -33,7 +33,7 @@ class SettingsRequest extends FormRequest
             'username' => ['required', 'alpha_dash', Rule::unique('users')->ignore(Auth::user()->id), 'min:3' ],
             'displayname' => ['required', 'alpha_dash', Rule::unique('users')->ignore(Auth::user()->id), 'different:username', 'min:3' ],
             'phone' => 'numeric|nullable',
-            'birthday' => 'date|required',
+            'birthday' => 'date|required|before:-16 years',
             'zip' => 'numeric|nullable',
         ];
     }

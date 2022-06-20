@@ -7,7 +7,7 @@
     </div>
     <div class="navbuttons">
         <x-admin.navbutton :route="''" :icon="'speedometer'" :text="'Overview'" />
-        <x-admin.navbutton :route="'users'" :icon="'people-fill'" :text="'Users'" />
+        <x-admin.navbutton :route="'users/list/'" :icon="'people-fill'" :text="'Users'" />
         <x-admin.navbutton :route="'products'" :icon="'archive-fill'" :text="'Products'" />
         <x-admin.navbutton :route="'orders'" :icon="'bag-fill'" :text="'Orders'" />
         <x-admin.navbutton :route="'payments'" :icon="'currency-dollar'" :text="'Payments'" />
