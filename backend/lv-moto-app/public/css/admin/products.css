@@ -52,6 +52,10 @@
     margin-right: 0.5vw;
 }
 
+ul {
+    margin-bottom: 0;
+}
+
 .flex {
     display: flex;
     flex-direction: row;
@@ -170,6 +174,11 @@ textarea:focus {
     margin-bottom: 0.3vw;
 }
 
+.ui-droppable {
+    display: block;
+    margin-bottom: 1rem;
+}
+
 .color-plus {
     background: linear-gradient(90deg, #4277FF 0%, #214DBE 100%);
     padding: 1vh;
@@ -248,6 +257,19 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+}
+
+.cat-label {
+    pointer-events: none;
+}
+
+.cat-label > i {
+    transition: transform 0.15s ease-in-out;
+}
+
+.collapsed .cat-label i {
+    transform: rotate(180deg);
 }
 
 .category {
@@ -258,6 +280,7 @@ textarea:focus {
     border-radius: 0.5vh;
     background: #282828;
     padding: 1vh 1vw;
+
 }
 
 .new-cat > i {
@@ -321,7 +344,11 @@ textarea:focus {
 
 /* Icons interactions */
 
-.fa-solid, .fa {
+.fa {
+    pointer-events: none;
+}
+
+.fa-solid {
     transition: 0.15s ease-in-out;
     cursor: pointer;
 }

@@ -15,6 +15,7 @@ interface IDbCredentials {
 }
 
 
+
 const Init = async (port : number, database : IDbCredentials) => {
     InitExpress(port)
     let time = new Date().getTime();
@@ -51,7 +52,7 @@ BaseListener("/products/find", (req,res) => {
 })
 
 BaseListener("/products/edit", (req,res) => { 
-    console.log(req.body.update)
+    
     db.collection("products").findOneAndUpdate({ "_id" : new ObjectId(req.body._id) }, {
         $set: req.body.update
     })
@@ -61,6 +62,7 @@ BaseListener("/products/edit", (req,res) => {
 
 BaseListener("/products/add", (req, res) => {
     const { body } = req;
+    
     db.collection("products").insertOne(body, (err, result) => {
         res.send(result)
     })

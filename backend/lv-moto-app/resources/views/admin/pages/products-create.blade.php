@@ -9,9 +9,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
-{{ $isEdit = !empty($product) }}
+
 
 @section("content")
+    <?php $isEdit = !empty($product) ?>
     <h2>@if($isEdit) {{ $title }} @else Create Product @endif</h2>
     <div class="inner-content">
         <div class="flex">
@@ -24,13 +25,12 @@
                     <img style="display: none" id="active-image">
                 </div>
                 <div class="carousel-slider">
-                    <button class="color-plus"><i class="fa fa-plus"></i></button>
                     @if ($isEdit)
-                        {{  $product['images'] }}
                         @foreach($product['images'] as $key => $value)
                             <button></button>
                         @endforeach
                     @endif
+                    <button class="color-plus"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
             <div class="flex-col prod-base-info grow">
@@ -60,8 +60,8 @@
                     <span class="mandatory">Colors (right click to remove)</span>
                     <div id="prod-colors">
                         @if ($isEdit)
-                            @foreach($product['colors'] as $color)
-                                <div>
+                            @foreach($product['variations'] as $color)
+                                <div style="background: {{$color}}">
                                     <input value="{{$color}}" type="color">
                                 </div>
                             @endforeach
@@ -78,12 +78,12 @@
                         <span>Discount</span>
                         <select id="discount-sel">
                             <option value="d">Disabled</option>
-                            <option @if($isEdit && !empty($product['discount']) && is_numeric($product['discount'])) selected="selected" @endif value="a">Active</option>
+                            <option @if($isEdit && array_key_exists('discount',$product) &&  !empty($product['discount']) && is_numeric($product['discount'])) selected="selected" @endif value="a">Active</option>
                         </select>
                     </div>
                     <div class="inp-f">
                         <span>Discounted Cost</span>
-                        <input @if($isEdit && !empty($product['discount'] && is_numeric($product['discount']))) value="{{$product['discount']}}" @endif id="discount-inp" style="text-align: center" type="number" name="title" placeholder="10.99" />
+                        <input @if($isEdit && array_key_exists('discount',$product) && !empty($product['discount'] && is_numeric($product['discount']))) value="{{$product['discount']}}" @endif id="discount-inp" style="text-align: center" type="number" name="title" placeholder="10.99" />
                     </div>
                 </div>
                 <div class="inp-f">
@@ -111,11 +111,11 @@
             </div>
             <div class="inp-f grow">
                 <span>Tags (separated by comas)</span>
-                <textarea class="grow" name="tags"></textarea>
+                <textarea id="tags" class="grow" name="tags">@if($isEdit && array_key_exists('tags',$product) && !empty($product['tags'])){{$product['tags']}}@endif</textarea>
             </div>
         </div>
         <div class="flex" style="justify-content: right; margin-top: 4vh;">
-            <button id="submit" class="grow">@if (!empty($confirmText)) {{$confirmText}} @else Create @endif</button>
+            <button id="submit" class="grow">@if ( !empty($confirmText)) {{$confirmText}} @else Create @endif</button>
         </div>
     </div>
 
@@ -129,7 +129,7 @@
         @if(empty($product))
             let loadedImages = [];
         @else
-            let loadedImages = JSON.parse("{{json_encode($product['images'])}}");
+            let loadedImages = JSON.parse("{{json_encode($product['images'])}}".replaceAll("&quot;",'"'));
         @endif
 
 
@@ -341,6 +341,7 @@
             })
 
             form.append("sizes", JSON.stringify(sizes.toArray()));
+            form.append("tags", $("#tags").val())
 
             let colors = $("#prod-colors > *:not(.color-plus)").map((k,v) => {
                 return $(v).find("input[type='color']").val();
@@ -348,6 +349,16 @@
 
             form.append("colors", JSON.stringify(colors.toArray()));
             form.append("category", catID);
+            if ($("#discount-sel").val() == 'a') {
+                form.append("discount", $("#discount-inp").val())
+            }
+
+            @if($isEdit)
+                if ("{{$isEdit}}" === "1") {
+                    form.append("_id", "{{$product["_id"]}}")
+                }
+            @endif
+
 
             $.ajax({
                 url : "{{route('admin.products.add')}}",

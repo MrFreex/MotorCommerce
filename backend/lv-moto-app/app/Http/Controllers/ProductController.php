@@ -79,6 +79,8 @@ class ProductController extends Controller
             'description' => 'required|min:3'
         ]);
 
+
+
         $product = [
             'title' => $request->title,
             'code' => $request->code,
@@ -88,8 +90,16 @@ class ProductController extends Controller
             'images' => $request->images,
             'sizes' => $request->sizes,
             'variations' => $request->colors,
-            'stock' => $request->stock
+            'stock' => $request->stock,
+            'tags' => $request->tags,
+            'discount' => $request->discount
         ];
+
+        $isEdit = $request->_id;
+
+        if (!empty($isEdit) && $isEdit) {
+            return MongoController::editProduct($isEdit, $product);
+        }
 
         return MongoController::addProduct($product);
     }

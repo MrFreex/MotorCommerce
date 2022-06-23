@@ -32,7 +32,7 @@
             <div>
                 <input type="hidden" value="{{$category['_id']}}">
                 <div class="category">
-                    <div class="cat-label">{{$category['label']}}</div>
+                    <div class="cat-label">{{$category['label']}} <i class="fa fa-chevron-up"></i> </div>
                     <div class="cat-actions">
                         <i onclick="window.location = '{{ route("admin.products.create", $category['_id']) }}'" class="fa-solid fa-plus"></i>
                         <i onclick="renameCat(this)" class="fa-solid fa-pen-to-square"></i>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <ul class="products-list collapse show">
-                    @foreach($category['products'] as $product)
+                    @forelse($category['products'] as $product)
                         <li>
                             <input type="hidden" value="{{$product['_id']}}">
                             <div>
@@ -48,13 +48,16 @@
                                 <div>{{$product['title']}}</div>
                             </div>
                             <div>
-                                <div>{{$product['cost']}}</div>
+                                <div>{{$product['cost']}} $</div>
                                 <div class="prod-actions">
                                     <i onclick="window.location='{{ route('admin.products.edit', $product['_id']) }}'" class="fa-solid fa-pen-to-square"></i>
+                                    <i onclick="window.location='{{ route('admin.products.delete', $product['_id']) }}'" class="fa-solid fa-trash"></i>
                                 </div>
                             </div>
                         </li>
-                    @endforeach
+                    @empty
+                        <li>No products in category</li>
+                    @endforelse
                 </ul>
             </div>
         @endforeach
@@ -101,8 +104,10 @@
         $(() => {
             $(".cat-cont").map((k,v) => {
                 $(v).find(".category").click((e) => {
-                    if (!$(e.target).hasClass(".category"))
+                    if (!$(e.target).hasClass(".category")) {
                         $(e.target).parent().find(".collapse").collapse('toggle');
+                        $(e.target).parent().find(".category").toggleClass("collapsed")
+                    }
                 })
             })
 
