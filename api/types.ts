@@ -22,6 +22,11 @@ interface Product {
     sizes : Size[],
 }
 
+interface Category {
+    _id : string,
+    label : string
+}
+
 export {
     Size,
     Product

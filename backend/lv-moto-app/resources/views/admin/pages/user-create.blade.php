@@ -4,6 +4,8 @@
     Create User
 @endsection
 
+@section("backurl"){{ route("admin.users") }}@endsection
+
 @section("action")
     {{route('admin.user.confirmCreate')}}
 @endsection

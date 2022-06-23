@@ -4,6 +4,8 @@
     Edit User {{$user->username}}
 @endsection
 
+@section("backurl"){{ route("admin.users") }}@endsection
+
 @section("action")
     {{route("admin.users.confirmEdit", $user->id)}}
 @endsection

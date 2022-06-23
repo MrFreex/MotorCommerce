@@ -12,7 +12,7 @@
             <p>Fill the fields below to proceed</p>
         </div>
         <div>
-            <button onclick="window.location='{{ route('admin.users') }}'"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <button onclick="window.location='@yield('backurl')'"><i class="fa-solid fa-arrow-left"></i> Back</button>
         </div>
 
         
@@ -37,7 +37,7 @@
             <div class="form-grid">
                 @yield("formContent")
             </div>
-            
+            @yield("formOutGrid")
             <button type="submit">@yield("submitText")</button>
         </form>
     </div>
