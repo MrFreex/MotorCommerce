@@ -145,6 +145,10 @@ return [
         'confirmPassword' => [
             'same' => 'The passwords must match.',
         ],
+
+        'birthday' => [
+            'before' => 'You need to be at least 16 years old to register.',
+        ],
     ],
 
     /*

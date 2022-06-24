@@ -1,7 +1,118 @@
 body {
-    color: black;
-    background-color: #ffffff;
-    display: grid;
+    color: white;
+    background-color: #202020;
+    display: flex;
     height: 100vh;
-    grid-template-columns: 15% auto;
+    transition: 0.15s ease-in-out;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.inline-flex > * {
+    margin: 0 0.5vw;
+    flex-grow: 1;
+}
+
+select {
+    padding: 1vh;
+    border-radius: 1vh;
+    outline: none;
+}
+
+button:not(.adm-navbutton) {
+    border-radius: 1vh;
+    outline: none;
+    color: white;
+    font-size: 120%;
+    padding: 1vh;
+    background: linear-gradient(to right, #007BFF, #0062E6);
+    transition: all 0.15s ease-in-out;
+}
+
+button:not(.adm-navbutton):hover {
+    transform: scale(101%);
+}
+
+
+input {
+    outline: none;
+    border-radius: 0.35vw;
+    padding: 1vh;
+    margin-bottom: 2vh;
+}
+
+.adm-container {
+    padding: 2vh 2vw;
+    flex-grow: 1;
+}
+
+.float-el {
+    overflow: hidden;
+    display: block;
+    border-radius: 10px;
+    width: 100%;
+    padding: 2vh;
+    background-color: #252525;
+}
+
+.data-cards {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    margin: 5% 0;
+}
+
+.data-card {
+    padding: 2vh;
+    margin: 0 15%;
+    border-radius: 2vh;
+    background: linear-gradient(45deg, #c348d3, #ff15c5);
+}
+
+.data-card > p {
+    font-size: 120%;
+}
+
+.charts {
+    display:grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.chart-grid {
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-grid > canvas {
+    display: block;
+    height: unset !important;
+    width: unset !important;
+}
+
+body.nav-open {
+    grid-template-columns: 20% auto;
+}
+
+table {
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #252525;
+    border: 1px solid white;
+    border-radius: 1.5vh;
+}
+
+tr:nth-child(even) {
+    background-color: #292929;
+}
+
+th,td {
+    padding: 1vh 1vw;
+}
+
+th {
+    text-align: left;
 }

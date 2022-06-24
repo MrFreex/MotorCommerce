@@ -18,6 +18,10 @@
         <input placeholder="Username" name="username" type="text">
         <span>Full name</span>
         <input placeholder="John Doe" name="name" type="text">
+        <span>Display Name</span>
+        <input placeholder="John_Doe" name="displayname" type="text">
+        <span>Birthday</span>
+        <input name="birthday" type="date">
         <span>Password</span>
         <input placeholder="Password" name="password" type="password">
         <span>Confirm Password</span>
@@ -31,6 +35,8 @@
                 </ul>
             </div>
         @endif
+        
         <button type="submit">Sign Up</button>
+        <p>All the fields are required</p>
     </form>
 @endsection

@@ -3,8 +3,10 @@
     @include('admin.header')
     <body class="antialiased">
         @include('admin.navbar')
-        <div class="container">
+        <div class="adm-container">
             @yield('content')
         </div>
+
+        @stack("scripts")
     </body>
 </html>
