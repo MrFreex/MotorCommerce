@@ -65,7 +65,7 @@ class MongoController extends Controller
         return $response->json();
     }
 
-    public function getAllProducts() {
+    public static function getAllProducts() {
         $response = Http::withHeaders([
             'auth-key' => self::$token,
         ])->post(self::$endpoint . "products/getAll", []);

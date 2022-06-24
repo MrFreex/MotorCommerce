@@ -47,6 +47,10 @@ class User extends Authenticatable
         'country' => 'Country',
     */
 
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+
     /**
      * The database table used by the model.
      *
@@ -100,7 +104,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+
 
     /**
      * Always encrypt password when it is updated.

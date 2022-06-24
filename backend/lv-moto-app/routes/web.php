@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,8 @@ Route::get('/', function () {
 Route::get('/login', "LoginController@showLoginForm");
 Route::get('/logout', "LoginController@logout");
 Route::get('/register', "RegisterController@show");
+
+Route::get('/store', [StoreController::class, "show"])->name("store");
 
 Route::get('/userProfile/{username}/{usePopup?}', "UserProfileController@show")->name('userProfile');
 
@@ -66,6 +70,10 @@ Route::prefix('admin')->middleware('EnsureAdminUser')->group(function() {
 
         Route::get('/delete/{id}', "MongoController@deleteProduct")->name('admin.products.delete');
         Route::get('/getOne', "MongoController@getOneProduct")->name('admin.products.getOne');
+    });
+
+    Route::prefix("orders")->group(function () {
+        Route::get("/list/{query?}/{field?}", [OrdersController::class, 'list'])->name("admin.orders");
     });
 });
 
