@@ -1,16 +1,121 @@
 .adm-navbar {
-    background-color: #c4c4c4;
     display: flex;
-    color: black;
+    color: white;
     flex-direction: column;
-    padding-top: 5vh;
+    justify-content: left;
+    background-color: #252525;
+    width: 5%;
+    transition: 0.15s ease-in-out;
+}
+
+.nav-open {
+    width: 20%;
+}
+
+@keyframes appearLeft {
+    0% {
+        opacity: 0;
+    }   
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.op0 {
+    opacity: 0;
+    display: block;
+}
+
+.nav-open .navbar-brand h3 {
+    animation: appearLeft 0.2s ease-in-out;
+    opacity: 1;
+    
+} 
+
+.nav-open .navbar-brand h3::before {
+    content: "> ";
+    color: #007BFF;
+}
+
+.nav-open .navbar-brand h3::after {
+    content: " <";
+    color: #007BFF;
 }
 
 .navbar-brand {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0.7vh 0;
+    justify-content: center;
 }
 
 .navbar-brand img {
-    max-width: 60%;
-    margin-bottom: 2vh;
+    width:4vw;
+}
+
+
+.navbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7vh 0;
+    flex-grow: 1;
+}
+
+.adm-navbutton {
+    color: white;
+    background-color: #007BFF;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75vh 5px;
+    border-radius: 0;
+    transition: 0.15s;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.452);
+}
+
+.adm-navbutton:nth-child(1) {
+    border-top: solid 1px rgba(255, 255, 255, 0.452);
+}
+
+
+.adm-navbutton:hover {
+    border-left: solid white 6px;
+}
+
+.nav-open .adm-navbutton {
+    justify-content: left;
+    padding-left: 1vw;
+}
+
+.adm-navbutton > i {
+    font-size: 200%;
+}
+
+.nav-open .adm-navbutton > div {
+    flex-grow: 1;
+}
+
+.adm-navbutton > div {
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.adm-navbutton > div > span {
+    display:none;
+    font-weight: 600;
+    font-size: 125%;
+    text-align: left;
+    padding-left: 1 0%;
+}
+
+.nav-open .adm-navbutton >  div > span {
+    margin-left: 0.5vw;
+    display: inline;
 }

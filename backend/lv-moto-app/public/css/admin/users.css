@@ -1,0 +1,49 @@
+a[href] {
+    color: white;
+    font-weight: bold;
+    transition: all 0.15s;
+}
+
+a[href]:hover {
+    color: rgb(194, 194, 194);
+}
+
+.title-adduser {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-adduser button {
+    padding: 1vh 1vw;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+}
+
+.form-field > span {
+    font-size: 120%;
+    margin-bottom: 1vh;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 2vh;
+}
+
+form button[type="submit"] {
+    width: 100%;
+}
+
+span.mandatory::after {
+    content: "*";
+    margin-left: 0.5vw;
+    color: rgb(255, 57, 57);
+}
+
+.user-actions > a {
+    margin-right: 0.5vw;
+}
